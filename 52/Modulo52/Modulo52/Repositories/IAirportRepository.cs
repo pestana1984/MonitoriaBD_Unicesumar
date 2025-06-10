@@ -6,7 +6,7 @@ namespace Modulo52.Repositories
     {
         Task<IEnumerable<Airport>> GetAirportsAsync();
         Task<Airport> GetAirportByNameAsync(string name);
-        Task CreateAirportAsync(Airport airport);
+        Task<Airport> CreateAirportAsync(Airport airport);
         Task<bool> UpdateAirportAsync(string id, Airport airport);
         Task<bool> DeleteAirportAsync(string id);
     }

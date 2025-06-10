@@ -1,4 +1,6 @@
-﻿using Modulo52.Models;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using Modulo52.Models;
 using Modulo52.Repositories;
 
 namespace Modulo52.Services
@@ -12,14 +14,23 @@ namespace Modulo52.Services
             _airportRepository = airportRepository;
         }
 
-        public Task CreateAirportAsync(Airport airport)
+        public Task<Airport> CreateAirportAsync(Airport airport)
         {
-            throw new NotImplementedException();
+            _airportRepository.CreateAirportAsync(airport);
+
+            return Task.FromResult(airport);
         }
 
-        public Task<bool> DeleteAirportAsync(string id)
+        public Task<bool> DeleteAirportAsync(string iata)
         {
-            throw new NotImplementedException();
+            var deleted = _airportRepository.DeleteAirportAsync(iata);
+
+            if(!deleted.Result)
+            {
+                return Task.FromResult(false);
+            }
+
+            return Task.FromResult(true);
         }
 
         public async Task<Airport> GetAirportByNameAsync(string name)
@@ -42,9 +53,9 @@ namespace Modulo52.Services
             return await _airportRepository.GetAirportsAsync();
         }
 
-        public Task<bool> UpdateAirportAsync(string id, Airport airport)
+        public Task<bool> UpdateAirportAsync(string icao, Airport airport)
         {
-            throw new NotImplementedException();
+            return _airportRepository.UpdateAirportAsync(icao, airport).ContinueWith(task => task.Result);
         }
     }
 }

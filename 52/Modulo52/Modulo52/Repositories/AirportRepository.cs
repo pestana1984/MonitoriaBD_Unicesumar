@@ -1,4 +1,5 @@
-﻿using Modulo52.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Modulo52.Models;
 using MongoDB.Driver;
 
 namespace Modulo52.Repositories
@@ -25,24 +26,29 @@ namespace Modulo52.Repositories
             return await _airportsCollection.Find(_ => true).ToListAsync();
         }
 
-        public Task CreateAirportAsync(Airport airport)
+        public async Task<Airport> CreateAirportAsync(Airport airport)
         {
-            throw new NotImplementedException();
+            await _airportsCollection.InsertOneAsync(airport);
+
+            return airport;
         }
 
-        public Task<bool> DeleteAirportAsync(string id)
+        public Task<bool> DeleteAirportAsync(string iata)
         {
-            throw new NotImplementedException();
+            return _airportsCollection.DeleteOneAsync(a => a.Iata.Equals(iata, StringComparison.OrdinalIgnoreCase))
+                .ContinueWith(task => task.Result.DeletedCount > 0);
         }
 
         public async Task<Airport> GetAirportByNameAsync(string name)
         {
-            return await _airportsCollection.Find(a => a.Name.Equals(name, StringComparison.OrdinalIgnoreCase)).FirstOrDefaultAsync();
+            return await _airportsCollection.Find(a => a.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+                .FirstOrDefaultAsync();
         }
 
-        public Task<bool> UpdateAirportAsync(string id, Airport airport)
+        public Task<bool> UpdateAirportAsync(string icao, Airport airport)
         {
-            throw new NotImplementedException();
+            return _airportsCollection.ReplaceOneAsync(a => a.Icao.Equals(icao, StringComparison.OrdinalIgnoreCase), airport)
+                .ContinueWith(task => task.Result.ModifiedCount > 0);
         }
     }
 }
