@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "1ae553b0-0df5-485e-951e-24cc84af4f09",
+		"name": "Monitoria52",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23774856",
+		"_collection_link": "https://restless-eclipse-377940.postman.co/workspace/New-Team-Workspace~8844fcf2-462c-4602-99b4-9dacfde49f4e/collection/23774856-1ae553b0-0df5-485e-951e-24cc84af4f09?action=share&source=collection_link&creator=23774856"
+	},
+	"item": [
+		{
+			"name": "Get ALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7012/api/Airport/All",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7012",
+					"path": [
+						"api",
+						"Airport",
+						"All"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Name",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7012/api/Airport/ByName/Pau de Alho",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7012",
+					"path": [
+						"api",
+						"Airport",
+						"ByName",
+						"Pau de Alho"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"\",\r\n    \"iata\": \"PDA\",\r\n    \"time_zone_id\": \"America/PauDalho\",\r\n    \"name\": \"Pau de Alho\",\r\n    \"city_code\": \"PDA\",\r\n    \"country_id\": \"BR\",\r\n    \"location\": \"POINT (-40.85836649182566 -2.89492665)\",\r\n    \"elevation\": \"40\",\r\n    \"icao\": \"PDLH\",\r\n    \"city\": \"PauDalho\",\r\n    \"state\": \"Pernambuco\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7012/api/Airport/Create",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7012",
+					"path": [
+						"api",
+						"Airport",
+						"Create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete By IATA",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7012/api/Airport/Delete/PDA",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7012",
+					"path": [
+						"api",
+						"Airport",
+						"Delete",
+						"PDA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update By ICAO",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"68477f5f20602030b10753bb\", // 68477f5f20602030b10753bb\r\n    \"iata\": \"PDA\",\r\n    \"time_zone_id\": \"America/PauDalho\",\r\n    \"name\": \"Pau de Alho\",\r\n    \"city_code\": \"PDA\",\r\n    \"country_id\": \"BR\",\r\n    \"location\": \"POINT (-30.85836649182566 -1.89492665)\",\r\n    \"elevation\": \"32\",\r\n    \"icao\": \"PDLH\",\r\n    \"city\": \"PauDalho\",\r\n    \"state\": \"Pernambuco\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7012/api/Airport/Update/PDLH",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7012",
+					"path": [
+						"api",
+						"Airport",
+						"Update",
+						"PDLH"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
