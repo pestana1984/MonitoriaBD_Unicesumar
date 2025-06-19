@@ -1,13 +1,23 @@
-﻿namespace WebAPIClinicas.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace WebAPIClinicas.Models;
+
+public partial class Endereco
 {
-    public class Endereco
-    {
-        public int EnderecoId { get; set; }
-        public string Logradouro {get; set;}
-        public int Numero { get; set; }
-        public string Bairro { get; set; }
-        public string CEP { get; set; }
-        public string Cidade { get; set; }
-        public string Estado { get; set; }
-    }
+    public int Enderecoid { get; set; }
+
+    public string Logradouro { get; set; } = null!;
+
+    public int Numero { get; set; }
+
+    public string Bairro { get; set; } = null!;
+
+    public string Cep { get; set; } = null!;
+
+    public string Cidade { get; set; } = null!;
+
+    public string Estado { get; set; } = null!;
+
+    public virtual ICollection<Clinica> Clinicas { get; set; } = new List<Clinica>();
 }

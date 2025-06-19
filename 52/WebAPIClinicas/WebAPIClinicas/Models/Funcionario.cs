@@ -1,13 +1,26 @@
-﻿namespace WebAPIClinicas.Models
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace WebAPIClinicas.Models;
+
+public partial class Funcionario
 {
-    public class Funcionario
-    {
-        public int FuncionarioID { get; set; }
-        public string NomeCompleto { get; set; }
-        public string CPF { get; set; }
-        public DateOnly DataNascimento { get; set; }
-        public string Cargo { get; set; }
-        public Clinica Clinica { get; set; }
-        public bool Ativo { get; set; }
-    }
+    public int Funcionarioid { get; set; }
+
+    public string Nomecompleto { get; set; } = null!;
+
+    public string Cpf { get; set; } = null!;
+
+    public DateOnly Datanascimento { get; set; }
+
+    public string Cargo { get; set; } = null!;
+
+    public int Clinicaid { get; set; }
+
+    public BitArray Ativo { get; set; } = null!;
+
+    public virtual Clinica Clinica { get; set; } = null!;
+
+    public virtual ICollection<Medico> Medicos { get; set; } = new List<Medico>();
 }

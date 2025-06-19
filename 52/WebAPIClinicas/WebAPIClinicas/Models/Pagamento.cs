@@ -1,12 +1,21 @@
-﻿namespace WebAPIClinicas.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace WebAPIClinicas.Models;
+
+public partial class Pagamento
 {
-    public class Pagamento
-    {
-        public int PagamentoID { get; set;}
-        public Agendamento Agendamento { get; set;}
-	    public double ValorConsulta { get; set;}
-        public string MeioPagamento { get; set;}
-	    public DateOnly DataPagamento { get; set;}
-        public string StatusPagamento { get; set; }
-    }
+    public int Pagamentoid { get; set; }
+
+    public int Agendamentoid { get; set; }
+
+    public decimal Valorconsulta { get; set; }
+
+    public string? Meiopagamento { get; set; }
+
+    public DateOnly? Datapagamento { get; set; }
+
+    public string Statuspagamento { get; set; } = null!;
+
+    public virtual Agendamento Agendamento { get; set; } = null!;
 }

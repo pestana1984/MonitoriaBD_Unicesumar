@@ -1,13 +1,25 @@
-﻿namespace WebAPIClinicas.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace WebAPIClinicas.Models;
+
+public partial class Prontuario
 {
-    public class Prontuario
-    {
-        public int ProntuarioID { get; set; }
-        public Agendamento Agendamento {get; set;}
-	    public Paciente Paciente {get; set;}
-        public string HistoricoDoenca {get; set;}
-	    public string Diagnostico {get; set;}
-        public string PrescricaoMedicamentos {get; set;}
-	    public string Observacoes {get; set;}
-    }
+    public int Prontuarioid { get; set; }
+
+    public int Agendamentoid { get; set; }
+
+    public int Pacienteid { get; set; }
+
+    public string? Historicodoenca { get; set; }
+
+    public string Diagnostico { get; set; } = null!;
+
+    public string? Prescricaomedicamentos { get; set; }
+
+    public string? Observacoes { get; set; }
+
+    public virtual Agendamento Agendamento { get; set; } = null!;
+
+    public virtual Paciente Paciente { get; set; } = null!;
 }

@@ -1,12 +1,25 @@
-﻿namespace WebAPIClinicas.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace WebAPIClinicas.Models;
+
+public partial class Clinica
 {
-    public class Clinica
-    {
-        public int ClinicaID;
-        public string NomeFantasia { get; set; } = string.Empty;
-        public string CNPJ { get; set; } = string.Empty;
-        public string TelefoneContato { get; set; } = string.Empty;
-	    public string EmailContato { get; set; } = string.Empty;
-        public Endereco Endereco { get; set; }
-    }
+    public int Clinicaid { get; set; }
+
+    public string Nomefantasia { get; set; } = null!;
+
+    public string Cnpj { get; set; } = null!;
+
+    public int? Enderecoid { get; set; }
+
+    public string? Telefonecontato { get; set; }
+
+    public string? Emailcontato { get; set; }
+
+    public virtual ICollection<Agendamento> Agendamentos { get; set; } = new List<Agendamento>();
+
+    public virtual Endereco? Endereco { get; set; }
+
+    public virtual ICollection<Funcionario> Funcionarios { get; set; } = new List<Funcionario>();
 }
