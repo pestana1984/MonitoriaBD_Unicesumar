@@ -16,17 +16,34 @@ namespace WebAPIClinicas.Services
             _context = appDbContext;
         }
 
-        public Endereco GetEnderecoById(int id)
+        public Endereco? GetEnderecoById(int id)
         {
             var endereco = _enderecoRepository.GetEnderecoById(id);
 
             if (endereco == null)
             {
-                throw new ArgumentException("Endereço não encontrado.");
+                return endereco;
             }
-            
-            return endereco;
 
+            return endereco;
+        }
+
+        public List<Endereco> GetAllEnderecos()
+        {
+            return _enderecoRepository.GetAllEnderecos();
+        }
+
+        public Endereco AddEndereco(Endereco endereco)
+        {
+            if (endereco == null)
+            {
+                throw new ArgumentNullException(nameof(endereco), "Endereço não pode ser nulo.");
+            }
+
+            if (!_enderecoRepository.GetEnderecoByCEP(endereco))
+                return _enderecoRepository.AddEndereco(endereco);
+            else
+                throw new Exception("Endereço já cadastrado com este CEP.");
         }
     }
 }

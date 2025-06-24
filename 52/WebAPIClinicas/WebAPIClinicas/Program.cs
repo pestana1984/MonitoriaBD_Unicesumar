@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<EnderecoService>();
 builder.Services.AddScoped<EnderecoRepository>();
@@ -23,7 +23,9 @@ var configuration = builder.Configuration;
 
 builder.Services.AddScoped<NpgsqlConnection>(sp =>
 {
-    var connectionString = configuration.GetConnectionString("DefaultConnection");
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
     return new NpgsqlConnection(connectionString);
 });
 
