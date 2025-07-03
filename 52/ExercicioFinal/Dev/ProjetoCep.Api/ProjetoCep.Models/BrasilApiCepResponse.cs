@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 
-
 namespace ProjetoCep.Models
 {
     public class BrasilApiCepResponse

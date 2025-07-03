@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Distributed.RedisCache" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProjetoCep.Models\ProjetoCep.Models.csproj" />
+    <ProjectReference Include="..\ProjetoCep.Services\ProjetoCep.Services.csproj" />
   </ItemGroup>
 
 </Project>

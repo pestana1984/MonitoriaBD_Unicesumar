@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjetoCep.Clients\ProjetoCep.Clients.csproj" />
     <ProjectReference Include="..\ProjetoCep.Models\ProjetoCep.Models.csproj" />
+    <ProjectReference Include="..\ProjetoCep.Repo\ProjetoCep.Repo.csproj" />
   </ItemGroup>
 
 </Project>

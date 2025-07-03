@@ -1,5 +1,4 @@
-﻿using ProjetoCep.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoCep.Repo
 {
-    public interface ICepRepository
+    public interface IDistributedCache
     {
-        Task InsertAsync(CepEntity cepEntity);
     }
 }
